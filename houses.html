@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home – Pasas Castle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=download&id=1anjKgP8M6gxCgS_cmZpOrV-Xsf-vZ-6w">
+  
+  <style>
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .logo-image {
+      max-width: 100px; /* Adjust the size as per your logo requirements */
+      height: auto;
+    }
+    
+    .line-break {
+      white-space: pre;
+    }
+    
+    a
+      {
+          text-decoration: none;
+          color: white;
+      }
+    
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Global styles */
+    body {
+      font-family: 'Playfair Display', serif; /* Vintage font */
+      background-color: #f7f7f7;
+      color: #fff; /* Set text color to white */
+    }
+
+    .fullscreen {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative; /* Add relative positioning */
+    }
+
+    .fullscreen img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Send image to the back */
+      filter: blur(0.0px);
+      
+    }
+
+    .fullscreen::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Light grey layer */
+      z-index: 0; /* Place the layer behind the text */
+    }
+
+    .fullscreen h1 {
+      font-size: 36px; /* Decrease font size for the first line */
+      text-align: center;
+      position: relative; /* Add relative positioning */
+      z-index: 1; /* Bring text to the front */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add black border */
+    }
+
+    
+    .fullscreen .section {
+      position: relative;
+      overflow: hidden; /* Add overflow: hidden to hide any content that exceeds the section */
+    }
+
+    .fullscreen .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      /* Add a gradient or overlay style here */
+    }
+
+    /* Gradient Example */
+
+    .fullscreen .section::before {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    }
+
+    /* Overlay Example */
+
+    .fullscreen .section::before {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    
+  
+    
+    .second-line {
+      font-size: 80px; /* Increase font size for the second line */
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: 40px; /* Increase distance from the bottom */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .arrow a {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      color: #fff; /* Set arrow color to white */
+      font-size: 24px;
+      line-height: 36px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      background-color: rgba(0, 0, 0, 0.5); /* Set arrow background color */
+    }
+
+    .arrow a:hover {
+      background-color: rgba(0, 0, 0, 0.8); /* Set arrow background color when hovered */
+    }
+
+    .arrow-up {
+      top: 40px; /* Increase distance from the top */
+    }
+
+    .menu-icon {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .menu-icon span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 4px;
+      transition: transform 0.3s ease;
+      z-index: 3;
+    }
+
+    .menu-icon.open span:nth-child(1) {
+      transform: rotate(45deg) translateX(4px);
+      z-index: 3;
+    }
+
+    .menu-icon.open span:nth-child(2) {
+      opacity: 0;
+      z-index: 3;
+    }
+
+    .menu-icon.open span:nth-child(3) {
+      transform: rotate(-45deg) translateX(4px);
+      z-index: 3;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 2; /* Set a higher z-index value */
+      display: none;
+      justify-content: flex-start;
+    }
+
+    .menu.open {
+      display: block;
+    }
+
+    .menu ul {
+      list-style: none;
+      text-align: left;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .menu ul li {
+      margin-bottom: 20px;
+    }
+
+    .menu ul li a {
+      display: inline-block;
+      padding: 10px 10px;
+      font-size: 20px;
+      font-weight: bold; /* Add font-weight for emphasis */
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      text-transform: uppercase; /* Convert text to uppercase */
+    }
+
+    .menu ul li a:hover {
+      color: #ccc;
+    }
+    
+    
+    .menu ul li.dropdown .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 10px;
+      left: 100%;
+      background-color: transparent;
+      padding: 30px;
+      z-index: 3;
+      white-space: nowrap;
+    }
+
+    .menu ul li.dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    .menu ul li.dropdown .dropdown-content a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      padding: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu ul li.dropdown .dropdown-content a:hover {
+      background-color: #000;
+    }
+
+    
+   
+    .phone-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      color: #fff;
+      text-decoration: none;
+      z-index: 3;
+    }
+    
+    .book-now-button {
+      position: fixed;
+      top: 20px;
+      right: 80px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      z-index: 3;
+    }
+    
+    .book-now-mobile {
+      position: fixed;
+      top: 20px;
+      right: 80px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      visibility: hidden;
+      z-index: 3;
+     }
+    
+    
+    .book-now-button:hover, .book-now-mobile:hover {
+      background-color: #000;
+      color: #fff;
+    }
+    
+    .book-now-button:active, .book-now-mobile:active {
+      transform: translateY(2px);
+    }
+    
+    .section1 {
+      background-image: url("https://drive.google.com/uc?export=download&id=1u2EVEw01pmt2vpWAm84YocmgaM0WoM0Z");
+    }
+    
+    
+    .section2-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+
+    .section2-content h2 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .section2-content .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .section2-content .button:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .section2-content .button:before {
+      content: '➜';
+      margin-right: 5px;
+    }
+
+
+    .section1-text {
+      font-size: 36px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin-top: 20px;
+    }
+    
+    .arrow-animate {
+      animation-duration: 0.3s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+
+    .arrow-down.animate {
+      animation-name: arrowMoveDown;
+    }
+
+    .arrow-up.animate {
+      animation-name: arrowMoveUp;
+    }
+    
+    .footer {
+      font-size: 110%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      position: absolute;
+      bottom: 26%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+
+    }
+
+    .footer-column {
+      text-align: center;
+      color: #fff;
+      flex-basis: 33%;
+      margin-bottom: 10px;
+    }
+    
+    .social-media-icons {
+       bottom: -80;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: -35%;
+      z-index: 1;
+    }
+
+    .social-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: #fff;
+      margin: 0 10px;
+      color: #000;
+      font-size: 24px;
+      text-decoration: none;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .pseudofooter {
+      font-size: 14px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.8);
+      text-align: center;
+    }
+
+    .pseudofooter p {
+      margin: 0;
+    }
+
+    .pseudofooter .left-text {
+      float: left;
+      text-align: left;
+      margin-right: auto;
+    }
+
+    .pseudofooter .center-text {
+      text-align: center;
+    }
+
+    .pseudofooter .right-text {
+      float: right;
+      text-align: right;
+      margin-left: auto;
+    }
+
+
+
+
+
+
+    @keyframes arrowMoveDown {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes arrowMoveUp {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .welcome,
+    .castle {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .welcome {
+      /* Add styles for the "Welcome to" text */
+      font-size: 36px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      /* Add any other desired styles */
+    }
+
+    .castle {
+      /* Add styles for the "Pasas Castle" text */
+      font-size: 60px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      /* Add any other desired styles */
+    }
+    
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .image-container img {
+      width: 350px;
+      height: auto;
+      top: 10%;
+      left: 36.5%;
+      z-index: 1; /* Send image to the back */
+     }
+
+
+    @media (max-width: 700px) {
+      .second-line {
+        font-size: 60px; /* Adjust the font size as desired for mobile devices */
+      }
+
+      .section1 {
+        background-image: url("https://drive.google.com/uc?export=download&id=11SHNFv557fjTNu3e-K8RHY1AynvadjJK");
+      }
+
+      .phone-icon, .book-now-button, .dropdown-content {
+        visibility: hidden;
+      }
+
+      .book-now-mobile{
+        right: 20px;
+        visibility: visible;
+      }
+      
+      
+    .menu{
+      width: 50%;
+      }
+      
+    .footer-column {
+      font-size: 80%;
+      text-align: center;
+      color: #fff;
+      flex-basis: 100%;
+      margin-bottom: -5%;
+      display: flex; /* Add flex display */
+      align-items: center; /* Center items vertically */
+      justify-content: center; /* Center items horizontally */
+      flex-direction: column; /* Stack items vertically */
+    }
+
+    .pseudofooter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .social-media-icons {
+      position: absolute;
+      top: 78%; /* Adjust the value to move the icons higher */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1; /* Increase the z-index to ensure icons are above the background image */
+    }
+      
+    .image-container img {
+      width: 280px;
+      height: auto;
+      top: 10%;
+      left: 15%;
+      z-index: 1; /* Send image to the back */
+     }
+
+      
+    }
+ 
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .social-media-icons {
+        position: absolute;
+        top: 250px; /* Adjust the value to move the icons higher */
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1; /* Increase the z-index to ensure icons are above the background image */
+      }
+      
+       .dropdown-content {
+        visibility: hidden;
+      }
+    }
+    
+    
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap">
+</head>
+
+<body>
+  
+  <div class="menu-icon" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="menu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Rooms & Suites</a>
+      </li>
+      <li><a href="#section3">Naxos Island</a></li>
+      <li><a href="#section4">Gallery</a></li>
+      <li><a href="#section5">Contact</a></li>
+    </ul>
+  </div>
+
+
+  <a class="phone-icon" href="tel:+306985955584">&#9742;</a>
+  
+  <a class="book-now-button" href="#">&#128197;  BOOK NOW</a>
+  <a class="book-now-mobile" href="#">BOOK</a>
+  
+<section id="section1" class="fullscreen">
+  <img src="https://drive.google.com/uc?export=download&id=1u2EVEw01pmt2vpWAm84YocmgaM0WoM0Z" alt="Background Image">
+  <h1>
+    <span class="welcome animated-text">Welcome to</span><br/>
+  	<span class="castle animated-text">Pasas Castle</span>
+  </h1>
+  
+  
+  
+  <div class="arrow arrow-down">
+    <a href="#section2" onclick="scrollToSection(event, 'down')">&#8595;</a>
+  </div>
+</section>
+
+
+
+
+  <section id="section2" class="fullscreen">
+    <img src="https://drive.google.com/uc?export=download&id=11WbqHLv7O_hshwpr4T4ababY2cU48Un3" alt="Background Image">
+    <div class="section2-content">
+      <h2>ROOMS &amp; SUITES</h2>
+      <a class="button" href="#">Read more</a>
+    </div>
+    <div class="arrow arrow-up">
+      <a href="#section1" onclick="scrollToSection(event, 'up')">&#8593;</a>
+    </div>
+    <div class="arrow">
+      <a href="#section3" onclick="scrollToSection(event, 'down')">&#8595;</a>
+    </div>
+  </section>
+
+
+  <section id="section3" class="fullscreen">
+    <img src="https://drive.google.com/uc?export=download&id=1h6S6SFbXW47DuAUfPC4RZ2Z4B5_rOEoh" alt="Background Image">
+    <div class="section2-content">
+      <h2>SPECIAL ACCOMMONDATION</h2>
+      <a class="button" href="#">Read more</a>
+    </div>
+    <div class="arrow arrow-up">
+      <a href="#section2" onclick="scrollToSection(event, 'up')">&#8593;</a>
+    </div>
+    <div class="arrow">
+      <a href="#section4" onclick="scrollToSection(event, 'down')">&#8595;</a>
+    </div>
+  </section>
+
+  <section id="section4" class="fullscreen">
+    <img src="https://drive.google.com/uc?export=download&id=1VfmayrmvCDUnf-gBVhGzpI6iajxhmrfT" alt="Background Image">
+    <div class="section2-content">
+      <h2>LOCAL TASTES & FRAGRANCES</h2>
+      <a class="button" href="#">Read more</a>
+    </div>
+    <div class="arrow arrow-up">
+      <a href="#section3" onclick="scrollToSection(event, 'up')">&#8593;</a>
+    </div>
+    <div class="arrow">
+      <a href="#section5" onclick="scrollToSection(event, 'down')">&#8595;</a>
+    </div>
+  </section>
+
+<section id="section5" class="fullscreen">
+  <img src="https://drive.google.com/uc?export=download&id=1GDcAEyX0NCWM5CDJqWvsmTKaa8B2ZQWW" alt="Background Image">
+  <div class="arrow arrow-up">
+    <a href="#section4" onclick="scrollToSection(event, 'up')">&#8593;</a>
+  </div>
+  <div class="social-media-icons">
+    <div class="social-link">
+      <i class="fab fa-facebook-f"></i>
+    </div>
+    <div class="social-link">
+      <i class="fab fa-twitter"></i>
+    </div>
+    <div class="social-link">
+      <i class="fab fa-instagram"></i>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-column">
+      <br/><i class="fas fa-map-marker-alt"></i>
+     <p><a href="https://goo.gl/maps/YFBVPMB3WKCBdcWq9">Saint George Beach</a></p><br/>
+    </div>
+    <div class="footer-column">
+      <br/><i class="fas fa-phone"></i>
+    <p><a href="tel:+1234567890">+30 698 595 5584</a></p><br/>
+    </div>
+    <div class="footer-column">
+      <br/><i class="far fa-envelope"></i>
+      <p><a href="mailto:book@pasascastle.gr">book@pasascastle.gr</a></p><br/>
+    </div>
+  </div>
+  
+
+    <div class="image-container">
+    <img src="https://drive.google.com/uc?export=download&id=1WQ62Sf94dHKFSTun5mAwZvuYFX1jv79l" alt="Image" width="500" height="auto">
+      </div>
+
+  
+ 
+  <div class="pseudofooter">
+    <p>
+      <span class="left-text">© 2023 <a href="https://www.pasascastle.gr">Pasas Castle Hotel.</a></span>
+      <span class="center-text"><a href="#">Terms & Conditions</a></span>
+      <span class="right-text">Developed by <a href="https://www.stefanstavrianos.eu">Stefanos Stavrianos</a></span>
+    </p>
+  </div>
+
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+  <script>
+    
+    
+   
+    function toggleMenu() {
+      const menu = document.querySelector(".menu");
+      const menuIcon = document.querySelector(".menu-icon");
+      const sections = document.querySelectorAll("section:not(#section1)");
+
+      menu.classList.toggle("open");
+      menuIcon.classList.toggle("open");
+
+      // Toggle the blur effect for the sections
+      sections.forEach((section) => {
+        section.classList.toggle("blur");
+      });
+    }
+
+    function scrollToSection(event, direction) {
+      event.preventDefault();
+
+      const targetSection = event.target.getAttribute("href");
+
+      // Scroll to the target section with the specified direction
+      if (direction === 'down') {
+        document.querySelector(targetSection).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        event.target.parentNode.classList.add("animate");
+      } else if (direction === 'up') {
+        const previousSection = event.target.closest("section").previousElementSibling;
+        if (previousSection) {
+          previousSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'end'
+          });
+          event.target.parentNode.classList.add("animate");
+        }
+      }
+
+    }
+  </script>
+</body>
+
+</html>
