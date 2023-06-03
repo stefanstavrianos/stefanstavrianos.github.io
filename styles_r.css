@@ -643,7 +643,7 @@
       z-index: 1; /* Send image to the back */
      }
 		
-			#section2 img,
+	#section2 img,
 	#section4 img,
 	#section6 img {
 	  position: absolute;
@@ -679,7 +679,7 @@
 	  justify-content: center;
 	  align-items: center;
 	  color: #fff;
-	  z-index: 1;
+	  z-index: 0;
 	}
 	  
 	#section3 .section2-content,
@@ -694,7 +694,7 @@
 	  justify-content: center;
 	  align-items: center;
 	  color: #fff;
-	  z-index: 1;
+	  z-index: 0;
 	  }
 
       
