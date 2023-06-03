@@ -642,6 +642,9 @@
       left: 15%;
       z-index: 1; /* Send image to the back */
      }
+	.button {
+	text-align:left;	
+	}
 		
 	#section2 img,
 	#section4 img,
