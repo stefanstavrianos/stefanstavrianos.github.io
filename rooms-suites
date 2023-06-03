@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rooms & Appartments – Pasas Castle</title>
+  <title>Rooms & Suites – Pasas Castle in Naxos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=download&id=1anjKgP8M6gxCgS_cmZpOrV-Xsf-vZ-6w">
   
@@ -21,11 +21,7 @@
       max-width: 100px; /* Adjust the size as per your logo requirements */
       height: auto;
     }
-    
-    .line-break {
-      white-space: pre;
-    }
-    
+        
     a
       {
           text-decoration: none;
@@ -45,6 +41,9 @@
       background-color: #f7f7f7;
       color: #fff; /* Set text color to white */
     }
+	  
+
+
 
     .fullscreen {
       height: 100vh;
@@ -66,16 +65,29 @@
       
     }
 
-    .fullscreen::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Light grey layer */
-      z-index: 0; /* Place the layer behind the text */
-    }
+	.fullscreen:not(#section1):not(#footer-section)::before {
+	  content: "";
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background-color: transparent;
+	  z-index: 0;
+	}
+
+	#section1::before,
+	#footer-section::before {
+	  content: "";
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background-color: rgba(0, 0, 0, 0.5);
+	  z-index: 0;
+	}
+
 
     .fullscreen h1 {
       font-size: 36px; /* Decrease font size for the first line */
@@ -84,38 +96,6 @@
       z-index: 1; /* Bring text to the front */
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add black border */
     }
-
-    
-    .fullscreen .section {
-      position: relative;
-      overflow: hidden; /* Add overflow: hidden to hide any content that exceeds the section */
-    }
-
-    .fullscreen .section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      /* Add a gradient or overlay style here */
-    }
-
-    /* Gradient Example */
-
-    .fullscreen .section::before {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-    }
-
-    /* Overlay Example */
-
-    .fullscreen .section::before {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    
-    
-  
     
     .second-line {
       font-size: 80px; /* Increase font size for the second line */
@@ -272,21 +252,23 @@
       z-index: 3;
     }
     
-    .book-now-button {
-      position: fixed;
-      top: 20px;
-      right: 80px;
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #fff;
-      color: #000;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      z-index: 3;
-    }
+	.book-now-button {
+	  position: fixed;
+	  top: 20px;
+	  right: 80px;
+	  display: inline-block;
+	  padding: 10px 20px;
+	  background-color: #fff;
+	  color: #000;
+	  font-size: 16px;
+	  font-weight: bold;
+	  text-decoration: none;
+	  border-radius: 5px;
+	  border: 1px solid black; /* Add this line to set the border */
+	  transition: background-color 0.3s ease;
+	  z-index: 3;
+	}
+
     
     .book-now-mobile {
       position: fixed;
@@ -302,6 +284,7 @@
       border-radius: 5px;
       transition: background-color 0.3s ease;
       visibility: hidden;
+	  border: 1px solid black; /* Add this line to set the border */	
       z-index: 3;
      }
     
@@ -320,43 +303,111 @@
     }
     
     
-    .section2-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 1;
-    }
+	#section2, #section3, #section4, #section5, #section6 {
+	  position: relative;
+	}
 
-    .section2-content h2 {
-      font-size: 40px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+	#section2 .section2-content,
+	#section4 .section2-content,
+	#section6 .section2-content{
+	  position: absolute;
+	  top: 0;
+	  right: 0;
+	  width: 50%;
+	  height: 100%;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  color: #fff;
+	  z-index: 1;
+	}
+	  
+	#section3 .section2-content,
+	#section5 .section2-content{
+	  position: absolute;
+	  top: 0;
+	  right: 50%;
+	  width: 50%;
+	  height: 100%;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  color: #fff;
+	  z-index: 1;
+	  }
+	  
+	#section2 .content-wrapper,
+	#section3 .content-wrapper,
+	#section4 .content-wrapper,
+	#section5 .content-wrapper,
+	#section6 .content-wrapper{
+	  padding: 20px;
+	  text-align: justify;
+	  color: black;
+	  background-color:white;
+	  z-index: -2;
+	}
 
-    .section2-content .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #fff;
-      color: #000;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
+	#section2 h2,
+	#section3 h2,
+	#section4 h2,
+	#section5 h2,
+	#section5 h2,
+	#section6 h2 {
+	  font-size: 40px;
+	  font-weight: bold;
+	  margin-bottom: 20px;
+	}
 
-    .section2-content .button:hover {
+	#section2 .button,
+	#section3 .button,
+	#section4 .button,
+	#section5 .button,
+	#section6 .button{ 
+	  display: inline-block;
+	  padding: 10px 20px;
+	  background-color: #000;
+	  color: #fff;
+	  font-size: 16px;
+	  font-weight: bold;
+	  text-decoration: none;
+	  border-radius: 5px;
+	  transition: background-color 0.3s ease;
+	}
+
+	#section2 .button:hover,
+	#section3 .button:hover,
+	#section4 .button:hover,
+	#section5 .button:hover,
+	#section6 .button:hover {
       background-color: #000;
       color: #fff;
-    }
+	}
 
-    .section2-content .button:before {
-      content: '➜';
-      margin-right: 5px;
-    }
-
+	#section2 img,
+	#section4 img,
+	#section6 img {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 50%;
+	  height: 100%;
+	  object-fit: cover;
+	  z-index: -1;
+	}
+	  
+	#section3 img,
+	#section5 img{
+	  position: absolute;
+	  top: 0;
+	  left: 50%;
+	  width: 50%;
+	  height: 100%;
+	  object-fit: cover;
+	  z-index: -1;
+	}  
 
     .section1-text {
       font-size: 36px;
@@ -371,7 +422,7 @@
       animation-duration: 0.3s;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
-    }
+	    }
 
     .arrow-down.animate {
       animation-name: arrowMoveDown;
@@ -471,7 +522,6 @@
 
 
 
-
     @keyframes arrowMoveDown {
       0% {
         transform: translateY(0);
@@ -513,7 +563,7 @@
 
     .welcome {
       /* Add styles for the "Welcome to" text */
-      font-size: 36px;
+      font-size: 26px;
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
       /* Add any other desired styles */
@@ -642,7 +692,7 @@
     <ul>
       <li><a href="#">Home</a></li>
       <li class="dropdown">
-        <a href="#">Rooms & Suites</a>
+        <a href="/houses">Rooms & Suites</a>
       </li>
       <li><a href="#section3">Naxos Island</a></li>
       <li><a href="#section4">Gallery</a></li>
@@ -656,114 +706,163 @@
   <a class="book-now-button" href="#">&#128197;  BOOK NOW</a>
   <a class="book-now-mobile" href="#">BOOK</a>
   
-<section id="section1" class="fullscreen">
-  <img src="https://drive.google.com/uc?export=download&id=1u2EVEw01pmt2vpWAm84YocmgaM0WoM0Z" alt="Background Image">
-  <h1>
-    <span class="welcome animated-text">Welcome to</span><br/>
-  	<span class="castle animated-text">Pasas Castle</span>
-  </h1>
-  
-  
-  
-  <div class="arrow arrow-down">
-    <a href="#section2" onclick="scrollToSection(event, 'down')">&#8595;</a>
-  </div>
-</section>
+	<section id="section1" class="fullscreen">
+	  <img src="https://drive.google.com/uc?export=download&id=1h6S6SFbXW47DuAUfPC4RZ2Z4B5_rOEoh" alt="Background Image">
+	  <h1>
+		  <span class="castle animated-text">Rooms & Suites</span><br/>  
+		<span class="welcome animated-text">Unique accommodation, full of Chian hospitality and nobility, in a warm, friendly environment</span><br/>
+
+	  </h1>
+
+
+
+	  <div class="arrow arrow-down">
+		<a href="#section2" onclick="scrollToSection(event, 'down')">&#8595;</a>
+	  </div>
+	</section>
 
 
 
 
-  <section id="section2" class="fullscreen">
-    <img src="https://drive.google.com/uc?export=download&id=11WbqHLv7O_hshwpr4T4ababY2cU48Un3" alt="Background Image">
-    <div class="section2-content">
-      <h2>ROOMS &amp; SUITES</h2>
-      <a class="button" href="#">Read more</a>
-    </div>
-    <div class="arrow arrow-up">
-      <a href="#section1" onclick="scrollToSection(event, 'up')">&#8593;</a>
-    </div>
-    <div class="arrow">
-      <a href="#section3" onclick="scrollToSection(event, 'down')">&#8595;</a>
-    </div>
-  </section>
+	<section id="section2" class="fullscreen">
+	  <div class="section2-content">
+		<div class="content-wrapper">
+			<center><h2>House of Hyperion</h2></center>
+			<p>Hyperion was the Titan god of heavenly light, one of the sons of Ouranos (Uranus) and Gaia (Earth), and the father of the lights of Heaven (Eos the Dawn), Helios (Sun), and Selene (Moon). His wife was Theia, lady of the Aither (the shining blue of the sky). Hyperion's name means "watcher from above" or "he who goes above" from the greek words hyper and iôn. </p>
+			<br/><center><a class="button" href="#">Read more</a></center>
+		</div>
+	  </div>
+	  <img src="https://drive.google.com/uc?export=download&id=16IcNRd7bt1Te9mGLRS8f5hNeqEPGZPjk" alt="Background Image">
+	  <div class="arrow arrow-up">
+		<a href="#section1" onclick="scrollToSection(event, 'up')">&#8593;</a>
+	  </div>
+	  <div class="arrow">
+		<a href="#section3" onclick="scrollToSection(event, 'down')">&#8595;</a>
+	  </div>
+	</section>
 
 
-  <section id="section3" class="fullscreen">
-    <img src="https://drive.google.com/uc?export=download&id=1h6S6SFbXW47DuAUfPC4RZ2Z4B5_rOEoh" alt="Background Image">
-    <div class="section2-content">
-      <h2>SPECIAL ACCOMMONDATION</h2>
-      <a class="button" href="#">Read more</a>
-    </div>
-    <div class="arrow arrow-up">
-      <a href="#section2" onclick="scrollToSection(event, 'up')">&#8593;</a>
-    </div>
-    <div class="arrow">
-      <a href="#section4" onclick="scrollToSection(event, 'down')">&#8595;</a>
-    </div>
-  </section>
 
-  <section id="section4" class="fullscreen">
-    <img src="https://drive.google.com/uc?export=download&id=1VfmayrmvCDUnf-gBVhGzpI6iajxhmrfT" alt="Background Image">
-    <div class="section2-content">
-      <h2>LOCAL TASTES & FRAGRANCES</h2>
-      <a class="button" href="#">Read more</a>
-    </div>
-    <div class="arrow arrow-up">
-      <a href="#section3" onclick="scrollToSection(event, 'up')">&#8593;</a>
-    </div>
-    <div class="arrow">
-      <a href="#section5" onclick="scrollToSection(event, 'down')">&#8595;</a>
-    </div>
-  </section>
 
-<section id="section5" class="fullscreen">
-  <img src="https://drive.google.com/uc?export=download&id=1GDcAEyX0NCWM5CDJqWvsmTKaa8B2ZQWW" alt="Background Image">
-  <div class="arrow arrow-up">
-    <a href="#section4" onclick="scrollToSection(event, 'up')">&#8593;</a>
-  </div>
-  <div class="social-media-icons">
-    <div class="social-link">
-      <i class="fab fa-facebook-f"></i>
-    </div>
-    <div class="social-link">
-      <i class="fab fa-twitter"></i>
-    </div>
-    <div class="social-link">
-      <i class="fab fa-instagram"></i>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="footer-column">
-      <br/><i class="fas fa-map-marker-alt"></i>
-     <p><a href="https://goo.gl/maps/YFBVPMB3WKCBdcWq9">Saint George Beach</a></p><br/>
-    </div>
-    <div class="footer-column">
-      <br/><i class="fas fa-phone"></i>
-    <p><a href="tel:+1234567890">+30 698 595 5584</a></p><br/>
-    </div>
-    <div class="footer-column">
-      <br/><i class="far fa-envelope"></i>
-      <p><a href="mailto:book@pasascastle.gr">book@pasascastle.gr</a></p><br/>
-    </div>
-  </div>
-  
+	<section id="section3" class="fullscreen">
+	  <div class="section2-content">
+		<div class="content-wrapper">
+			<center><h2>House of Aeolus</h2></center>
+			<br/><p>Aeolus was the divine keeper of the winds and king of the mythical, floating island of Aiolia (Aeolia). He kept the violent Storm-Winds locked safely away inside the cavernous interior of his isle, releasing them only at the command of greatest gods to wreak devastation upon the world.</p>
+			<br/><center><a class="button" href="#">Read more</a></center>
+		</div>
+	  </div>
+	  <img src="https://drive.google.com/uc?export=download&id=1h6S6SFbXW47DuAUfPC4RZ2Z4B5_rOEoh" alt="Background Image">
+	  <div class="arrow arrow-up">
+		<a href="#section2" onclick="scrollToSection(event, 'up')">&#8593;</a>
+	  </div>
+	  <div class="arrow">
+		<a href="#section4" onclick="scrollToSection(event, 'down')">&#8595;</a>
+	  </div>
+	</section>
 
-    <div class="image-container">
-    <img src="https://drive.google.com/uc?export=download&id=1WQ62Sf94dHKFSTun5mAwZvuYFX1jv79l" alt="Image" width="500" height="auto">
-      </div>
 
-  
- 
-  <div class="pseudofooter">
-    <p>
-      <span class="left-text">© 2023 <a href="https://www.pasascastle.gr">Pasas Castle Hotel.</a></span>
-      <span class="center-text"><a href="#">Terms & Conditions</a></span>
-      <span class="right-text">Developed by <a href="https://www.stefanstavrianos.eu">Stefanos Stavrianos</a></span>
-    </p>
-  </div>
+	<section id="section4" class="fullscreen">
+	  <div class="section2-content">
+		<div class="content-wrapper">
+			<center><h2>House of Aphrodite</h2></center>
+			<p>Aphrodite, the ancient Greek goddess of sexual love and beauty, identified with Venus by the Romans. The Greek word "aphros" means “foam,” and Hesiod relates in his Theogony that Aphrodite was born from the white foam produced by the severed genitals of Ouranos (Uranus), after his son Cronus threw them into the sea.</p><br/>
+			<center><a class="button" href="#">Read more</a></center>
+		</div>
+	  </div>
+	  <img src="https://drive.google.com/uc?export=download&id=1NQ-3z3Z1I4lu2UTNzR-nVOCD4y437Hu8" alt="Background Image">
+	  <div class="arrow arrow-up">
+		<a href="#section3" onclick="scrollToSection(event, 'up')">&#8593;</a>
+	  </div>
+	  <div class="arrow">
+		<a href="#section5" onclick="scrollToSection(event, 'down')">&#8595;</a>
+	  </div>
+	</section>
+	
+	<section id="section5" class="fullscreen">
+	  <div class="section2-content">
+		<div class="content-wrapper">
+			<center><h2>House of Poseidon</h2></center>
+			<p>In Greek mythology, Poseidon (Neptune to the Romans) was a son of the Titans (Giants) Cronus and Rhea, and the brother of the supreme god Zeus. Triton was one of his sons. Poseidon also had many other children out of wedlock. Poseidon is the god of the sea and waters, as well as of horses and earthquakes.</p>
+			<center><br/><a class="button" href="#">Read more</a></center>
+		</div>
+	  </div>
+	  <img src="https://drive.google.com/uc?export=download&id=17ARZi3e_UpTaIZut6fDnwhDlG-Y99-1j" alt="Background Image">
+	  <div class="arrow arrow-up">
+		<a href="#section4" onclick="scrollToSection(event, 'up')">&#8593;</a>
+	  </div>
+	  <div class="arrow">
+		<a href="#section6" onclick="scrollToSection(event, 'down')">&#8595;</a>
+	  </div>
+	</section>
 
-  
-</section>
+	<section id="section6" class="fullscreen">
+	  <div class="section2-content">
+		<div class="content-wrapper">
+			<center><h2>House of Atlas</h2></center>
+			<p>In Greek mythology, Poseidon (Neptune to the Romans) was a son of the Titans (Giants) Cronus and Rhea, and the brother of the supreme god Zeus. Triton was one of his sons. Poseidon also had many other children out of wedlock. Poseidon is the god of the sea and waters, as well as of horses and earthquakes.</p>
+			<center><br/><a class="button" href="#">Read more</a></center>
+		</div>
+	  </div>
+	  <img src="https://drive.google.com/uc?export=download&id=1aYhKI8E4J6qDpZZA7koJYDOoDnFeOTAF" alt="Background Image">
+	  <div class="arrow arrow-up">
+		<a href="#section5" onclick="scrollToSection(event, 'up')">&#8593;</a>
+	  </div>
+	  <div class="arrow">
+		<a href="#footer-section" onclick="scrollToSection(event, 'down')">&#8595;</a>
+	  </div>
+	</section>
+
+
+
+	<section id="footer-section" class="fullscreen">
+	  <img src="https://drive.google.com/uc?export=download&id=1GDcAEyX0NCWM5CDJqWvsmTKaa8B2ZQWW" alt="Background Image">
+	  <div class="arrow arrow-up">
+		<a href="#section4" onclick="scrollToSection(event, 'up')">&#8593;</a>
+	  </div>
+	  <div class="social-media-icons">
+		<div class="social-link">
+		  <i class="fab fa-facebook-f"></i>
+		</div>
+		<div class="social-link">
+		  <i class="fab fa-twitter"></i>
+		</div>
+		<div class="social-link">
+		  <i class="fab fa-instagram"></i>
+		</div>
+	  </div>
+	  <div class="footer">
+		<div class="footer-column">
+		  <br/><i class="fas fa-map-marker-alt"></i>
+		 <p><a href="https://goo.gl/maps/YFBVPMB3WKCBdcWq9">Saint George Beach</a></p><br/>
+		</div>
+		<div class="footer-column">
+		  <br/><i class="fas fa-phone"></i>
+		<p><a href="tel:+1234567890">+30 698 595 5584</a></p><br/>
+		</div>
+		<div class="footer-column">
+		  <br/><i class="far fa-envelope"></i>
+		  <p><a href="mailto:book@pasascastle.gr">book@pasascastle.gr</a></p><br/>
+		</div>
+	  </div>
+
+
+		<div class="image-container">
+		<img src="https://drive.google.com/uc?export=download&id=1WQ62Sf94dHKFSTun5mAwZvuYFX1jv79l" alt="Image" width="500" height="auto">
+		  </div>
+
+
+
+	  <div class="pseudofooter">
+		<p>
+		  <span class="left-text">© 2023 <a href="https://www.pasascastle.gr">Pasas Castle Hotel.</a></span>
+		  <span class="center-text"><a href="#">Terms & Conditions</a></span>
+		  <span class="right-text">Developed by <a href="https://www.stefanstavrianos.eu">Stefanos Stavrianos</a></span>
+		</p>
+	  </div>
+
+
+	</section>
 
 
 
@@ -776,6 +875,7 @@
 
   <script>
     
+
     
    
     function toggleMenu() {
@@ -816,7 +916,11 @@
       }
 
     }
+
+
+
   </script>
+		
 </body>
 
 </html>
