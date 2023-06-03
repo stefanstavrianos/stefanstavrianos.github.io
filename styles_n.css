@@ -642,16 +642,17 @@
       z-index: 1; /* Send image to the back */
      }
 		
-			#section2 img,
+	#section2 img,
 	#section4 img,
 	#section6 img {
 	  position: absolute;
 	  top: 0;
 	  left: 0;
 	  width: 100%;
-	  height: 50%;
+	  height: 100%;
 	  object-fit: cover;
 	  z-index: -1;
+	  filter: blur(2px);
 	}
 
 	#section3 img,
@@ -660,9 +661,10 @@
 	  top: 0;
 	  left: 0%;
 	  width: 100%;
-	  height: 50%;
+	  height: 100%;
 	  object-fit: cover;
 	  z-index: -1;
+	  filter: blur(2px);
 	}
 
 	#section2 .section2-content,
@@ -672,12 +674,12 @@
 	  top: 50%;
 	  right: 0;
 	  width: 100%;
-	  height: 50%;
+	  height: 100%;
 	  display: flex;
 	  flex-direction: column;
 	  justify-content: center;
 	  align-items: center;
-	  color: #fff;
+	  color: white;
 	  z-index: 1;
 	}
 	  
@@ -687,12 +689,12 @@
 	  top: 50%;
 	  right: 0%;
 	  width: 100%;
-	  height: 50%;
+	  height: 100%;
 	  display: flex;
 	  flex-direction: column;
 	  justify-content: center;
 	  align-items: center;
-	  color: #fff;
+	  color: white;
 	  z-index: 1;
 	  }
 
