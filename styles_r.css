@@ -642,11 +642,8 @@
       left: 15%;
       z-index: 1; /* Send image to the back */
      }
-
-      
-    }
-
-	#section2 img,
+		
+			#section2 img,
 	#section4 img,
 	#section6 img {
 	  position: absolute;
@@ -699,6 +696,11 @@
 	  color: #fff;
 	  z-index: 1;
 	  }
+
+      
+    }
+
+
  
     @media (min-width: 768px) and (max-width: 1024px) {
       .social-media-icons {
