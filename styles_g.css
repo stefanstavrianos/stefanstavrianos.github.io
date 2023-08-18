@@ -789,13 +789,15 @@ nav {
 
 /* Media query for mobile view */
 @media (max-width: 768px) {
-    /* Assuming the logo is inside .logo-container, and this container sits between the arrow and the footer */
+    /* Assuming the logo is inside .logo-container */
     .logo-container {
-        display: flex;
-        flex-direction: column; /* Stack children vertically */
-        justify-content: center; /* Center children vertically */
-        align-items: center; /* Center children horizontally */
-        flex-grow: 1; /* Allow the container to take available vertical space */
-        gap: 20px; /* Provides equal spacing between children */
+        position: relative; /* To position the logo image relative to this container */
+    }
+
+    .logo-image {
+        position: absolute;
+        top: 50%; /* Move the top edge of the logo to the midpoint of the container */
+        transform: translateY(-50%); /* Shift the logo upwards by half of its height */
+        z-index: 1; /* Ensure the logo appears above other content if needed */
     }
 }
