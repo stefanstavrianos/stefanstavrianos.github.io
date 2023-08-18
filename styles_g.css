@@ -563,10 +563,16 @@
       z-index: 1; /* Send image to the back */
      }
 
-	        .gallery-box {
-        width: 100%;    /* Take full width of the parent/container */
-        display: block; /* Stack vertically */
+    /* Assuming the boxes are in a flex container, we'll set the direction to column */
+    .gallery-box-container {  /* This is a placeholder class. We need to replace it with the correct container class or ID */
+        flex-direction: column;
     }
+
+    .gallery-box {
+        width: 100%;    /* Take full width of the parent/container */
+        margin-bottom: 10px; /* Add some spacing between boxes */
+    }
+}
 
       
     }
