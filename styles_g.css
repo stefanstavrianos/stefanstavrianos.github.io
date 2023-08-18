@@ -787,17 +787,15 @@ nav {
 
 
 
-/* Media query for mobile view */
-@media (max-width: 768px) {
-    /* Assuming the logo is inside .logo-container */
-    .logo-container {
-        position: relative; /* To position the logo image relative to this container */
-    }
+/* Globally centering the logo's vertical midpoint */
+.logo-container {
+    position: relative; /* To position the logo image relative to this container */
+}
 
-    .logo-image {
-        position: absolute;
-        top: 50%; /* Move the top edge of the logo to the midpoint of the container */
-        transform: translateY(-50%); /* Shift the logo upwards by half of its height */
-        z-index: 1; /* Ensure the logo appears above other content if needed */
-    }
+.logo-image {
+    position: absolute;
+    top: 50%; /* Move the top edge of the logo to the midpoint of the container */
+    left: 50%; /* Center the logo horizontally */
+    transform: translate(-50%, -50%); /* Shift the logo to be centered both horizontally and vertically */
+    z-index: 1; /* Ensure the logo appears above other content if needed */
 }
