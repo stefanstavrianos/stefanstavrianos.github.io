@@ -264,7 +264,7 @@
 	    z-index: 3;
 	    padding: 5px;          /* Increased padding for better aesthetics */
 	    background-color: black; /* A light grey background, change as desired */
-	    border-radius: 50%;    /* This makes it round */
+	    border-radius: 10%;    /* This makes it round */
 	}
     
     .book-now-button {
