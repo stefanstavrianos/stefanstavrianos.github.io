@@ -563,17 +563,6 @@
       z-index: 1; /* Send image to the back */
      }
 
-    /* Assuming the boxes are in a flex container, we'll set the direction to column */
-    .gallery-box-container {  /* This is a placeholder class. We need to replace it with the correct container class or ID */
-        flex-direction: column;
-    }
-
-    .gallery-box {
-        width: 100%;    /* Take full width of the parent/container */
-        margin-bottom: 10px; /* Add some spacing between boxes */
-    }
-}
-
       
     }
  
@@ -796,3 +785,16 @@ nav {
 
 
 
+
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+    #section2 {
+        display: block;  /* Ensure the container does not use flex or grid layout on mobile */
+    }
+
+    #section2 .gallery-box {
+        width: 100%;    /* Boxes take full width of the container */
+        margin-bottom: 15px; /* Space between boxes for better visual separation */
+    }
+}
