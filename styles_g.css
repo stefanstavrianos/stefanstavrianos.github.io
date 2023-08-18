@@ -2,14 +2,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 20px;
+      margin-top: 21px;
     }
 
     .logo-image {
       max-width: 100px; /* Adjust the size as per your logo requirements */
       height: auto;
+      z-index: 0;
     }
-        
+    
+    .line-break {
+      white-space: pre;
+    }
+    
     a
       {
           text-decoration: none;
@@ -29,9 +34,6 @@
       background-color: #f7f7f7;
       color: #fff; /* Set text color to white */
     }
-	  
-
-
 
     .fullscreen {
       height: 100vh;
@@ -53,29 +55,16 @@
       
     }
 
-	.fullscreen:not(#section1):not(#footer-section)::before {
-	  content: "";
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  background-color: transparent;
-	  z-index: 0;
-	}
-
-	#section1::before,
-	#footer-section::before {
-	  content: "";
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  background-color: rgba(0, 0, 0, 0.5);
-	  z-index: 0;
-	}
-
+    .fullscreen::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Light grey layer */
+      z-index: 0; /* Place the layer behind the text */
+    }
 
     .fullscreen h1 {
       font-size: 36px; /* Decrease font size for the first line */
@@ -84,6 +73,38 @@
       z-index: 1; /* Bring text to the front */
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add black border */
     }
+
+    
+    .fullscreen .section {
+      position: relative;
+      overflow: hidden; /* Add overflow: hidden to hide any content that exceeds the section */
+    }
+
+    .fullscreen .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      /* Add a gradient or overlay style here */
+    }
+
+    /* Gradient Example */
+
+    .fullscreen .section::before {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    }
+
+    /* Overlay Example */
+
+    .fullscreen .section::before {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    
+  
     
     .second-line {
       font-size: 80px; /* Increase font size for the second line */
@@ -94,6 +115,7 @@
       bottom: 40px; /* Increase distance from the bottom */
       left: 50%;
       transform: translateX(-50%);
+      z-index: 3;
     }
 
     .arrow a {
@@ -108,14 +130,17 @@
       text-decoration: none;
       transition: background-color 0.3s ease;
       background-color: rgba(0, 0, 0, 0.5); /* Set arrow background color */
+      z-index: 3;
     }
 
     .arrow a:hover {
       background-color: rgba(0, 0, 0, 0.8); /* Set arrow background color when hovered */
+      z-index: 3;
     }
 
     .arrow-up {
       top: 40px; /* Increase distance from the top */
+      z-index: 3;
     }
 
     .menu-icon {
@@ -242,23 +267,21 @@
 	    border-radius: 50%;    /* This makes it round */
 	}
     
-	.book-now-button {
-	  position: fixed;
-	  top: 20px;
-	  right: 80px;
-	  display: inline-block;
-	  padding: 10px 20px;
-	  background-color: #fff;
-	  color: #000;
-	  font-size: 16px;
-	  font-weight: bold;
-	  text-decoration: none;
-	  border-radius: 5px;
-	  border: 1px solid black; /* Add this line to set the border */
-	  transition: background-color 0.3s ease;
-	  z-index: 3;
-	}
-
+    .book-now-button {
+      position: fixed;
+      top: 20px;
+      right: 80px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      z-index: 3;
+    }
     
     .book-now-mobile {
       position: fixed;
@@ -274,7 +297,6 @@
       border-radius: 5px;
       transition: background-color 0.3s ease;
       visibility: hidden;
-	  border: 1px solid black; /* Add this line to set the border */	
       z-index: 3;
      }
     
@@ -291,112 +313,7 @@
     .section1 {
       background-image: url("https://drive.google.com/uc?export=download&id=1u2EVEw01pmt2vpWAm84YocmgaM0WoM0Z");
     }
-    
-    
-	#section2, #section3, #section4, #section5, #section6 {
-	  position: relative;
-	}
 
-	#section2 .section2-content,
-	#section4 .section2-content,
-	#section6 .section2-content{
-	  position: absolute;
-	  top: 0;
-	  right: 0;
-	  width: 40%;
-	  height: 100%;
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  align-items: center;
-	  color: black;
-	  z-index: 1;
-	}
-	  
-	#section3 .section2-content,
-	#section5 .section2-content{
-	  position: absolute;
-	  top: 0;
-	  right: 60%;
-	  width: 40%;
-	  height: 100%;
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  align-items: center;
-	  color: black;
-	  z-index: 1;
-	  }
-	  
-	#section2 .content-wrapper,
-	#section3 .content-wrapper,
-	#section4 .content-wrapper,
-	#section5 .content-wrapper,
-	#section6 .content-wrapper{
-	  padding: 20px;
-	  text-align: justify;
-	  background-color:transparent;
-	  z-index: -2;
-	}
-
-	#section2 h2,
-	#section3 h2,
-	#section4 h2,
-	#section5 h2,
-	#section5 h2,
-	#section6 h2 {
-	  font-size: 40px;
-	  font-weight: bold;
-	  margin-bottom: 20px;
-	}
-
-	#section2 .button,
-	#section3 .button,
-	#section4 .button,
-	#section5 .button,
-	#section6 .button{ 
-	  display: inline-block;
-	  padding: 10px 20px;
-	  background-color: #000;
-	  color: #fff;
-	  font-size: 16px;
-	  font-weight: bold;
-	  text-decoration: none;
-	  border-radius: 5px;
-	  transition: background-color 0.3s ease;
-	}
-
-	#section2 .button:hover,
-	#section3 .button:hover,
-	#section4 .button:hover,
-	#section5 .button:hover,
-	#section6 .button:hover {
-      background-color: #000;
-      color: #fff;
-	}
-
-	#section2 img,
-	#section4 img,
-	#section6 img {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 60%;
-	  height: 100%;
-	  object-fit: cover;
-	  z-index: -1;
-	}
-	  
-	#section3 img,
-	#section5 img{
-	  position: absolute;
-	  top: 0;
-	  left: 40%;
-	  width: 60%;
-	  height: 100%;
-	  object-fit: cover;
-	  z-index: -1;
-	}  
 
     .section1-text {
       font-size: 36px;
@@ -411,7 +328,7 @@
       animation-duration: 0.3s;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
-	    }
+    }
 
     .arrow-down.animate {
       animation-name: arrowMoveDown;
@@ -498,6 +415,7 @@
     }
 
     .pseudofooter .center-text {
+      float:center;
       text-align: center;
     }
 
@@ -506,6 +424,7 @@
       text-align: right;
       margin-left: auto;
     }
+
 
 
 
@@ -552,7 +471,7 @@
 
     .welcome {
       /* Add styles for the "Welcome to" text */
-      font-size: 26px;
+      font-size: 36px;
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
       /* Add any other desired styles */
@@ -588,7 +507,7 @@
       }
 
       .section1 {
-        background-image: url("https://drive.google.com/uc?export=download&id=11SHNFv557fjTNu3e-K8RHY1AynvadjJK");
+        background-image: url("https://drive.google.com/uc?export=download&id=1u2EVEw01pmt2vpWAm84YocmgaM0WoM0Z");
       }
 
       .phone-icon, .book-now-button, .dropdown-content {
@@ -640,74 +559,12 @@
       width: 280px;
       height: auto;
       top: 10%;
-      left: 15%;
-      z-index: 0; /* Send image to the back */
+      left: 50%;
+      z-index: 1; /* Send image to the back */
      }
-		
-	#section2 img,
-	#section4 img,
-	#section6 img {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  object-fit: cover;
-	  z-index: -1;
-	  filter: blur(2px);
-	}
-
-	#section3 img,
-	#section5 img{
-	  position: absolute;
-	  top: 0;
-	  left: 0%;
-	  width: 100%;
-	  height: 100%;
-	  object-fit: cover;
-	  z-index: -1;
-	  filter: blur(4px);
-
-	}
-
-	#section2 .section2-content,
-	#section4 .section2-content,
-	#section6 .section2-content{
-	  position: absolute;
-	  top: 0%;
-	  right: 0;
-	  width: 100%;
-	  height: 100%;
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  align-items: center;
-	  color: white;
-	  z-index: 0;
-	  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add black border */
-	}
-	  
-	#section3 .section2-content,
-	#section5 .section2-content{
-	  position: absolute;
-	  top: 0%;
-	  right: 0%;
-	  width: 100%;
-	  height: 100%;
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  align-items: center;
-	  color: #fff;
-	  z-index: 0;
-	  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add black border */		
-		
-	  }
 
       
     }
-
-
  
     @media (min-width: 768px) and (max-width: 1024px) {
       .social-media-icons {
@@ -727,3 +584,204 @@
     }
     
     
+#gallery-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4 equal columns */
+  gap: 20px;  /* Gap between boxes */
+  padding: 40px;  /* Padding around the section */
+  background-color: rgba(0, 0, 0, 0.7);  /* Slight dark background for contrast */
+}
+
+.gallery-box {
+  padding: 20px;  /* Padding inside the box */
+  border: 2px solid white;  /* White border for each box */
+  border-radius: 10px;  /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;  /* Larger font size for box content */
+}
+
+
+/* Updated styles for section2 boxes */
+#section2 .gallery-box {
+  background-color: rgba(0, 0, 0, 0.5); /* Light grey layer */
+  border: none;  /* Remove border */
+  height: 100%;  /* Make box fill entire section height */
+  transition: background-color 0.3s;  /* Smooth transition for hover effect */
+}
+
+
+/* Center text and button in each box */
+.box-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.5); /* Light grey layer */
+}
+
+.box-content p {
+  margin-bottom: 10px;
+}
+
+.box-content button {
+  padding: 10px 20px;
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 3;
+}
+
+.box-content button:hover {
+  background-color: white;
+  color: black;
+
+}
+
+
+
+/* Style for the navigation arrows in section2 */
+#section2 .arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 36px;
+}
+
+#section2 .arrow-up {
+  top: 10px;
+}
+
+#section2 .arrow-down {
+  bottom: 10px;
+}
+
+/* Update box content to ensure full height and width */
+#section2 .gallery-box {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* Background image styles for each box in section2 */
+#section2 .gallery-box[data-image="naxos1.jpg"] {
+  background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/465941611.jpg?k=34eb4c97328c77d74733e5fe4f5b68576d19442fc74a7ed8fadd56d0d5e1677f&o=&hp=1');
+}
+
+#section2 .gallery-box[data-image="naxos2.jpg"] {
+  background-image: url('https://i.ibb.co/Wpw1v69/pexels-jerry-apples-15214860.jpg');
+}
+
+#section2 .gallery-box[data-image="naxos3.jpg"] {
+  background-image: url('https://www.greeka.com/photos/unique/cyclades/naxos/gallery/IMG_2085-1024.jpg');
+}
+
+#section2 .gallery-box[data-image="naxos4.jpg"] {
+  background-image: url('https://i.ibb.co/Fn4H3x6/pexels-mart-production-9566331.jpg');
+}
+
+/* Ensure the images cover the boxes and are centered */
+#section2 .gallery-box {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0;
+  z-index: 0;
+}
+
+
+
+/* Increase the font size of the text and make it more prominent */
+#section2 .box-content button, 
+#section2 .box-content p {
+  font-family: inherit;  /* Use the same font as the parent element */
+  z-index: 2;
+  font-size: 30px;  /* Increased font size */
+  color: white;  /* Make text white to be more prominent */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Add shadow for better readability */
+  z-index: 2;
+  
+}
+
+
+/* Decrease the size of the button and make it transparent in section2 */
+#section2 .box-content button {
+  font-size: 16px;  /* Decreased font size */
+  padding: 10px 20px;  /* Decreased padding */
+  background-color: black;  /* Make button transparent */
+  z-index:3;
+}
+
+
+
+/* Hover effect for buttons in section2 */
+#section2 .box-content button:hover {
+  border-color: black;  /* Black border on hover */
+  background-color: white;  /* White background on hover */
+  color: black;  /* Black text on hover */
+}
+
+/* Luxurious font styles for section2 */
+#section2 .box-content {
+  font-family: 'Playfair Display', serif;  /* Example luxurious font */
+}
+
+
+
+/* Bring the menu to the forefront */
+nav {
+  position: relative;
+  z-index: 3;  /* Higher z-index to ensure it's on top of other elements */
+}
+
+
+
+/* Fix the menu at the top and make it span the full width */
+nav {
+  position: fixed;  /* Fix the position */
+  top: 0;  /* At the top */
+  left: 0;  /* Starting from the leftmost edge */
+  width: 100%;  /* Span the full width */
+  z-index: 3;
+}
+
+
+
+/* Set the highest z-index for the menu to ensure it's at the forefront */
+nav {
+  z-index: 3;  /* Highest z-index for the menu */
+}
+
+
+
+/* Raise the z-index for the menu */
+nav {
+  z-index: 3;  /* Higher z-index for the menu */
+}
+
+#section1 .fullscreen img{
+  z-index: -1;  /* Adjusted z-index for the fullscreen images */
+}
+
+
+
+
+.fullscreen::before {
+  z-index: 0;  /* Adjusted z-index for the fullscreen before pseudo-element */
+}
+
+.fullscreen h1 {
+  z-index: 1;  /* Adjusted z-index for the fullscreen heading */
+}
+
+.emoji {
+  filter: grayscale(100%);
+}
+
+
+
