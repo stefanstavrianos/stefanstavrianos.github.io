@@ -791,10 +791,12 @@ nav {
 @media (max-width: 768px) {
     #section2 {
         display: block;  /* Ensure the container does not use flex or grid layout on mobile */
+        height: auto;    /* Adjust height based on content */
     }
 
     #section2 .gallery-box {
-        width: 100%;    /* Boxes take full width of the container */
+        width: 100%;         /* Boxes take full width of the container */
         margin-bottom: 15px; /* Space between boxes for better visual separation */
+        height: auto;        /* Remove any fixed height */
     }
 }
