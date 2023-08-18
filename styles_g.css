@@ -789,14 +789,13 @@ nav {
 
 /* Media query for mobile view */
 @media (max-width: 768px) {
-    #section2 {
-        display: block;  /* Ensure the container does not use flex or grid layout on mobile */
-        height: auto;    /* Adjust height based on content */
-    }
-
-    #section2 .gallery-box {
-        width: 100%;         /* Boxes take full width of the container */
-        margin-bottom: 15px; /* Space between boxes for better visual separation */
-        height: auto;        /* Remove any fixed height */
+    /* Assuming the logo is inside .logo-container, and this container sits between the arrow and the footer */
+    .logo-container {
+        display: flex;
+        flex-direction: column; /* Stack children vertically */
+        justify-content: center; /* Center children vertically */
+        align-items: center; /* Center children horizontally */
+        flex-grow: 1; /* Allow the container to take available vertical space */
+        gap: 20px; /* Provides equal spacing between children */
     }
 }
