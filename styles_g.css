@@ -563,6 +563,11 @@
       z-index: 1; /* Send image to the back */
      }
 
+	        .gallery-box {
+        width: 100%;    /* Take full width of the parent/container */
+        display: block; /* Stack vertically */
+    }
+
       
     }
  
