@@ -799,3 +799,19 @@ nav {
     transform: translate(-50%, -50%); /* Shift the logo to be centered both horizontally and vertically */
     z-index: 1; /* Ensure the logo appears above other content if needed */
 }
+
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+    .logo-container {
+        display: flex;        /* Use flexbox for positioning */
+        justify-content: center; /* Center the logo horizontally */
+        align-items: center;     /* Center the logo vertically */
+        height: 100%;         /* Ensure the container takes full height of its parent */
+    }
+
+    .logo-image {
+        position: static;    /* Reset the positioning to default for mobile */
+        transform: none;     /* Reset any transformations */
+    }
+}
