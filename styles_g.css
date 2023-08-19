@@ -256,15 +256,17 @@
     
    
 	.phone-icon {
-	    position: fixed;
-	    top: 20px;
-	    right: 20px;
-	    font-size: 30px;
-	    text-decoration: none;
-	    z-index: 3;
-	    padding: 5px;          /* Increased padding for better aesthetics */
-	    background-color: black; /* A light grey background, change as desired */
-	    border-radius: 10%;    /* This makes it round */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 3px;
+      background-color: #fff;
+      color: #000;
+      font-size: 25px;
+      text-decoration: none;
+      border-radius: 10%;
+      transition: background-color 0.3s ease;
+      z-index: 3;
 	}
     
     .book-now-button {
@@ -301,12 +303,12 @@
      }
     
     
-    .book-now-button:hover, .book-now-mobile:hover {
+    .book-now-button:hover, .book-now-mobile:hover, .phone-icon:hover {
       background-color: #000;
       color: #fff;
     }
     
-    .book-now-button:active, .book-now-mobile:active {
+    .book-now-button:active, .book-now-mobile:active,.phone-icon:active {
       transform: translateY(2px);
     }
     
@@ -788,30 +790,15 @@ nav {
 
 
 /* Globally centering the logo's vertical midpoint */
-.logo-container {
-    position: relative; /* To position the logo image relative to this container */
-}
-
-.logo-image {
-    position: absolute;
-    top: 50%; /* Move the top edge of the logo to the midpoint of the container */
-    left: 50%; /* Center the logo horizontally */
-    transform: translate(-50%, -50%); /* Shift the logo to be centered both horizontally and vertically */
-    z-index: 1; /* Ensure the logo appears above other content if needed */
-}
-
-
-/* Media query for mobile view */
-@media (max-width: 768px) {
     .logo-container {
-        display: flex;        /* Use flexbox for positioning */
-        justify-content: center; /* Center the logo horizontally */
-        align-items: center;     /* Center the logo vertically */
-        height: 100%;         /* Ensure the container takes full height of its parent */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
     }
 
     .logo-image {
-        position: static;    /* Reset the positioning to default for mobile */
-        transform: none;     /* Reset any transformations */
+      max-width: 100px; /* Adjust the size as per your logo requirements */
+      height: auto;
     }
-}
+

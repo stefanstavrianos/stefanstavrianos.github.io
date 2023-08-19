@@ -231,15 +231,17 @@
     
    
 	.phone-icon {
-	    position: fixed;
-	    top: 20px;
-	    right: 20px;
-	    font-size: 30px;
-	    text-decoration: none;
-	    z-index: 3;
-	    padding: 5px;          /* Increased padding for better aesthetics */
-	    background-color: black; /* A light grey background, change as desired */
-	    border-radius: 50%;    /* This makes it round */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 3px;
+      background-color: #fff;
+      color: #000;
+      font-size: 25px;
+      text-decoration: none;
+      border-radius: 10%;
+      transition: background-color 0.3s ease;
+      z-index: 3;
 	}
     
 	.book-now-button {
@@ -279,12 +281,12 @@
      }
     
     
-    .book-now-button:hover, .book-now-mobile:hover {
+    .book-now-button:hover, .book-now-mobile:hover, .phone-icon:hover {
       background-color: #000;
       color: #fff;
     }
     
-    .book-now-button:active, .book-now-mobile:active {
+    .book-now-button:active, .book-now-mobile:active, .phone-icon:active {
       transform: translateY(2px);
     }
     
